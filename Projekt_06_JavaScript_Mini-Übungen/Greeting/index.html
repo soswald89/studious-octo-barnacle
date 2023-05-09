@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grußmaschine</title>
+
+    <style>
+        .animate {
+            animation: 1s fadeIn ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        } 
+
+    </style>
+
+    <script>
+
+        function greet() {
+            let name = document.getElementById('name').value;
+
+            changeGreeting('Hallo ', 0, name);
+            changeGreeting('Hello ', 3000, name);
+            changeGreeting('Bonjour ', 6000, name);
+            changeGreeting('Hola ', 9000, name);
+        }
+
+
+
+        function changeGreeting(hello, time, name) {
+            setTimeout(function () {
+                document.getElementById('greetbox').classList.add('animate');
+                document.getElementById('greetbox').innerHTML = hello + name;
+
+                setTimeout(function() {
+                    document.getElementById('greetbox').classList.remove('animate');
+                }, 1000);              
+            }, time);
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <h1>Greetings!</h1>
+
+    <input placeholder="Dein Name" id="name" type="text">
+    <button onclick="greet()">Grüßen</button>
+
+    <h2 id="greetbox">Hallo</h2>
+
+</body>
+
+</html>
